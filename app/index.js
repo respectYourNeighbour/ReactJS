@@ -1,10 +1,16 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var app = document.getElementById('app');
+var USER_DATA = {
+    name: 'Filip',
+    username: 'FilipUsr',
+    image: 'https://cdn2.iconfinder.com/data/icons/iconslandsport/PNG/256x256/Skateboard.png'
+}
 
 // Step 1 - First React Component
 var HelloWorld = React.createClass({
     render: function(){
+        console.log('this.props in HelloWorld Component: ' + this.props);
         return (
             <div>Hello, {this.props.name} !</div>
         )
@@ -92,6 +98,44 @@ var StatelessAvatar = function (props) {
     )
 }
 
+// Step 4 - Nesting Components
+var ProfilePic = React.createClass({
+    render: function() {
+        return <img src={this.props.imageUrl} style={{height:100, width: 100}} />
+    }
+});
+
+var ProfileLink = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <a href={'http://www.google.com'}>
+                    {this.props.username}
+                </a>
+            </div>
+        )
+    }
+});
+
+var MyAvatar = React.createClass({
+    render: function() {
+        console.log('this props in my avatar: ', this.props);
+        return (
+            <div>
+                <ProfilePic imageUrl={this.props.user.image} />
+                <ProfileName name={this.props.user.name} />
+                <ProfileLink username={this.props.user.username} />
+            </div>
+        )
+    }
+})
+
+var ProfileName = React.createClass({
+    render: function() {
+        return <div>{this.props.name}</div>
+    }
+})
+
 
 
 ReactDOM.render(
@@ -110,3 +154,6 @@ ReactDOM.render(
     <StatelessAvatar username="tylermcginnis" />, document.getElementById('statelessAvatar')
 );
 
+ReactDOM.render(
+    <MyAvatar user={USER_DATA} />, document.getElementById('myAvatar')
+);
