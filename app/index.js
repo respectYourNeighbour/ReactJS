@@ -6,6 +6,7 @@ var USER_DATA = {
     username: 'FilipUsr',
     image: 'https://cdn2.iconfinder.com/data/icons/iconslandsport/PNG/256x256/Skateboard.png'
 }
+var routes = require('./config/routes')
 
 // Step 1 - First React Component
 var HelloWorld = React.createClass({
@@ -105,13 +106,26 @@ var ProfilePic = React.createClass({
     }
 });
 
+var Link = React.createClass({
+    changeURL: function() {
+        window.location.replace(this.props.href);
+    },
+    render: function() {
+        return(
+            <span style={{color: 'blue', cursor: 'pointer'}} onClick={this.changeURL}>
+                {this.props.children}
+            </span>
+        )
+    }
+})
+
 var ProfileLink = React.createClass({
     render: function() {
         return (
             <div>
-                <a href={'http://www.google.com'}>
+                <Link href={'http://www.google.com'}>
                     {this.props.username}
-                </a>
+                </Link>
             </div>
         )
     }
@@ -156,4 +170,9 @@ ReactDOM.render(
 
 ReactDOM.render(
     <MyAvatar user={USER_DATA} />, document.getElementById('myAvatar')
+);
+
+ReactDOM.render(
+    routes,
+    document.getElementById('app')
 );
