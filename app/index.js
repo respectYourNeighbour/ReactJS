@@ -1,12 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var app = document.getElementById('app');
+var routes = require('./config/routes');
+
 var USER_DATA = {
     name: 'Filip',
     username: 'FilipUsr',
     image: 'https://cdn2.iconfinder.com/data/icons/iconslandsport/PNG/256x256/Skateboard.png'
 }
-var routes = require('./config/routes')
 
 // Step 1 - First React Component
 var HelloWorld = React.createClass({
