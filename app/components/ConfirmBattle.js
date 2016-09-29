@@ -1,9 +1,9 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var styles = require('../styles')
+var styles = require('../styles');
 var Link = require('react-router').Link;
-var UserDetails = require('./UserDetails');
-var UserDetailsWrapper = require('./UserDetailsWrapper');
+var UserDetails = require('./UsersDetails');
+var UserDetailsWrapper = require('./UsersDetailsWrapper');
 
 
 function puke(object) {
@@ -41,6 +41,6 @@ ConfirmBattle.propTypes = {
     playersInfo: PropTypes.array.isRequired,
     onInitiateBattle: PropTypes.func.isRequired
 
-}
+};
 
 module.exports = ConfirmBattle;
